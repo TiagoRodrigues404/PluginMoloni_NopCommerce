@@ -1,0 +1,104 @@
+﻿@model ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+@using Nop.Plugin.Misc.Moloni.Models
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+<form asp-controller="MoloniConfiguration" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="StripeEmail" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="StripeEmail" />
+                        <span asp-validation-for="StripeEmail"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ClientId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ClientId" />
+                        <span asp-validation-for="ClientId"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ClientSecret" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ClientSecret" />
+                        <span asp-validation-for="ClientSecret"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Username" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Username" />
+                        <span asp-validation-for="Username"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="Password" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="RedirectURI" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="RedirectURI" />
+                        <span asp-validation-for="RedirectURI"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="CompanyId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="CompanyId" />
+                        <span asp-validation-for="CompanyId"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="_key" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="_key" />
+                        <span asp-validation-for="_key"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <nop-label asp-for="_iv" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="_iv" />
+                        <span asp-validation-for="_iv"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" class="btn btn-primary">Gravar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

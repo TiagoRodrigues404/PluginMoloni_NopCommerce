@@ -1,0 +1,39 @@
+@{
+    Layout = "_AdminLayout";
+}
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery antiforgery
+
+<div id="successMessage" style="display:none; margin-top: 10px;" class="alert alert-success">A&ccedil;&atilde;o executada com sucesso!</div>
+
+<div class="content-header">
+    <h1>Configura&ccedil;&otilde;es do Moloni</h1>
+</div>
+
+<div class="content-body">
+    <div style="margin-top: 20px; margin-left: 20px; display: flex; flex-direction: column; align-items: flex-start;">
+        <label for="syncProductsButton" style="margin-bottom: 10px;">Sincronizar os produtos e categorias para o Moloni:</label>
+        <button id="syncProductsButton" class="btn btn-primary">Sincronizar</button>
+    </div>
+    <input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@antiforgery.GetAndStoreTokens(Context).RequestToken" />
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#syncProductsButton').click(function () {
+            $.ajax({
+                url: '@Url.Action("SyncProducts", "AdminPanel", new { area = "Admin" })',
+                type: 'POST',
+                headers: {
+                    'RequestVerificationToken': $('#RequestVerificationToken').val()
+                },
+                success: function () {
+                    $('#successMessage').show();
+                },
+                error: function () {
+                    $('#successMessage').text("Ocorreu um erro ao sincronizar os produtos.").show();
+                }
+            });
+        });
+    });
+</script>
